@@ -1,0 +1,28 @@
+{% extends "admin_layout.html" %}
+{% block content %}
+  {% if chapter %}
+    <div> 
+        <h4>Edit Chapter</h4>
+        <div> 
+            <form action="/edit_chapter/{{chapter.id}}/{{name}}" method="POST">
+                <div class="mb-3">
+                <label for="chapter_name" class="form-label">Chapter Name :</label>
+                <input type="text" class="form-control" id="chapter_name" name="chapter_name" value="{{chapter.name}}">
+                </div>
+                <div class="mb-3">
+                <label for="no_of_question" class="form-label">No. of Quiz</label>
+                <input type="number" class="form-control" id="no_of_question" name="no_of_question" value="{{chapter.no_of_question}}">
+                </div>
+                
+                <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <input type="text" class="form-control" id="description" name="description" value="{{chapter.description}}">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Save</button>
+                <a href="/admin_dashboard/{{name}}" type="submit" class="btn btn-danger">Cancel</a>
+            </form>
+        </div>
+    </div>
+  {% endif %}
+{% endblock %}

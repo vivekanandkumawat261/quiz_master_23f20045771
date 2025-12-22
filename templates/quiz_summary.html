@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Summary</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container py-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">Quiz Summary</h5>
+            </div>
+            <div class="card-body">
+                <h6>Quiz: {{ quiz.quiz_name }}</h6>
+                <p>Total Questions: {{ quiz.no_of_question }}</p>
+                
+                {% set score = quiz.scores|selectattr('user_id', 'equalto', current_user.id)|first %}
+                {% if score %}
+                    <p>Your Score: {{ score.total_scored }}/{{ quiz.no_of_question }}</p>
+                    <p>Percentage: {{ (score.total_scored / quiz.no_of_question * 100)|round(2) }}%</p>
+                {% endif %}
+                
+                <a href="{{ url_for('scores_dashboard', username=current_user.username) }}" 
+                   class="btn btn-primary">
+                    Back to Scores
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

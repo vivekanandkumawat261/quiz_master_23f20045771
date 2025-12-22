@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+    {% block title %}
+          <!-- title -->
+    {% endblock %}
+    </title>
+    {% block styles %}
+
+    <style>
+    h1 {
+      text-align: center;  /* Center text inside the h1 element */
+      font-size: 3rem;  /* Optional, adjust the size of the heading */
+      color: #333;  /* Optional, change the text color */
+      margin-top: 20px;  /* Optional, add space at the top if needed */
+      background-color: green;
+      color: white; /* Optional: Change text color for better visibility */
+    }
+    </style>
+    {% endblock %}
+</head>
+<body>
+     
+    <h1>Quiz master</h1>
+     
+      
+    {% block content %}
+         <!-- content  -->
+    {% endblock %}
+     
+     
+</body>
+</html>

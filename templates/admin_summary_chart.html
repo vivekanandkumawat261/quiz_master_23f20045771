@@ -1,0 +1,44 @@
+{% extends "admin_layout.html" %}
+
+{% block content %}
+<div class="container-fluid">
+    <!-- Navigation Bar -->
+    
+
+    <!-- Summary Title -->
+    <div class="text-center mb-4">
+        <h2>Summary Charts</h2>
+    </div>
+
+    <!-- Charts Section -->
+    <div class="row">
+        <!-- Bar Chart -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    Subject wise top scores
+                </div>
+                <div class="card-body text-center">
+                    <img src="data:image/png;base64,{{ bar_chart }}" 
+                         class="img-fluid" 
+                         alt="Subject-wise Top Scores">
+                </div>
+            </div>
+        </div>
+
+        <!-- Circular Chart -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    Subject wise user attempts
+                </div>
+                <div class="card-body text-center">
+                    <img src="data:image/png;base64,{{ circle_chart }}" 
+                         class="img-fluid" 
+                         alt="Subject-wise User Attempts">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

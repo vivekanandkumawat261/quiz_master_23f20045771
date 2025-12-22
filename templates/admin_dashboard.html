@@ -1,0 +1,113 @@
+{% extends "admin_layout.html" %}
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Admin Dashboard</h1>
+
+    <!-- Users Table -->
+    <div class="card mb-5">
+        <div class="card-header bg-primary text-white">
+            <h3>Users</h3>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered">
+                    <thead class="table-primary">
+                        <tr>
+                            <th>ID</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Blocked</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                        <tr>
+                            <td>{{user.id}}</td>
+                            <td>{{ user.username }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ 'Admin' if user.role == 0 else 'User' }}</td>
+                            <td>{{ 'Yes' if user.blocked else 'No' }}</td>
+                            <td>
+                                {% if user.blocked %}
+                                <form action="{{ url_for('unblock_user', user_id=user.id, admin_name=name) }}" method="POST" style="display: inline;">
+                                    <button type="submit" class="btn btn-success">Unblock</button>
+                                </form>
+                                {% else %}
+                                <form action="{{ url_for('block_user', user_id=user.id, admin_name=name) }}" method="POST" style="display: inline;">
+                                    <button type="submit" class="btn btn-danger">Block</button>
+                                </form>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- Subjects and Chapters -->
+    <div class="container">
+        {% if subjects %}
+        <div class="row gy-4">
+            {% for subject in subjects %}
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="card-title">{{ subject.name }}</h5>
+                            <div class="btn-group">
+                                <a href="/edit_subject/{{subject.id}}/{{name}}" class="btn btn-outline-primary btn-sm">Edit</a>
+                                <a href="/delete_subject/{{subject.id}}/{{name}}" class="btn btn-danger btn-sm">Delete</a>
+                            </div>
+                        </div>
+                        {% if subject.chapters %}
+                        <div class="table-responsive">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Chapter Name</th>
+                                        <th>No. of Quiz</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for chapter in subject.chapters %}
+                                    <tr>
+                                        <td>{{ chapter.id }}</td>
+                                        <td>{{ chapter.name }}</td>
+                                        <td>{{ chapter.no_of_question }}</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <a href="/edit_chapter/{{chapter.id}}/{{name}}" class="btn btn-outline-primary btn-sm">Edit</a>
+                                                <a href="/delete_chapter/{{chapter.id}}/{{name}}" class="btn btn-danger btn-sm">Delete</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        {% else %}
+                        <p class="text-muted">No chapters available.</p>
+                        {% endif %}
+                        <a href="/new_chapter/{{subject.id}}/{{name}}" class="btn btn-outline-primary btn-sm mt-2">+ Add Chapter</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <h3 class="text-center text-muted">No subjects available.</h3>
+        {% endif %}
+        <div class="text-center mt-4">
+            <a href="/new_subject/{{name}}" class="btn btn-primary">+ Add Subject</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

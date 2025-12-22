@@ -1,0 +1,60 @@
+{% extends "admin_layout.html" %}
+{% block content %}
+    <div> 
+        <h4>New Question</h4>
+        <div> 
+            <form action="/new_question/{{subject_id}}/{{chapter_id}}/{{quiz_id}}" method="POST">
+
+                <div class="mb-3">
+                <label for="subject_id" class="form-label">Subject ID :</label>
+                <input type="text" class="form-control" id="subject_id" name="subject_id" value="{{subject_id}}">
+                </div>
+
+                <div class="mb-3">
+                <label for="chapter_id" class="form-label">Chapter ID :</label>
+                <input type="text" class="form-control" id="chapter_id" name="chapter_id" value="{{chapter_id}}">
+                </div>
+
+                <div class="mb-3">
+                <label for="quiz_id" class="form-label">Quiz ID :</label>
+                <input type="text" class="form-control" id="quiz_id" name="quiz_id" value="{{quiz_id}}">
+                </div>
+                
+                <div class="mb-3">
+                    <label for="question_title" class="form-label">Question title :</label>
+                    <input type="text" class="form-control" id="question_title" name="question_title">
+                </div>
+                 
+                
+                <div class="mb-3">
+                <label for="question_statement" class="form-label">Question Statement :</label>
+                <input type="text" class="form-control" id="question_statement" name="question_statement">
+                </div>
+                <div class="mb-3">
+                <label for="question_1" class="form-label">Question 1 :</label>
+                <input type="text" class="form-control" id="question_1" name="question_1">
+                </div>
+                <div class="mb-3">
+                <label for="question_2" class="form-label">Question 2 :</label>
+                <input type="text" class="form-control" id="question_2" name="question_2">
+                </div>
+                <div class="mb-3">
+                <label for="question_3" class="form-label">Question 3 :</label>
+                <input type="text" class="form-control" id="question_3" name="question_3">
+                </div>
+                <div class="mb-3">
+                <label for="question_4" class="form-label">Question 4 :</label>
+                <input type="text" class="form-control" id="question_4" name="question_4">
+                </div>
+                <div class="mb-3">
+                <label for="correct_question" class="form-label">Correct Question :</label>
+                <input type="text" class="form-control" id="correct_question" name="correct_question">
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Save and Next</button>
+                <button type="submit" class="btn btn-danger">Close</button>
+            </form>
+        </div>
+       
+    </div>
+{% endblock %}

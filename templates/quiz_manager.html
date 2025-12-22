@@ -1,0 +1,91 @@
+{% extends "admin_layout.html" %}
+{% block content %}
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Quiz Management</h1>
+        
+        <!-- Users Table -->
+        
+        {% if subjects %}
+            {% for subject in subjects %}
+                {% if subject.chapters %}
+                    {% for chapter in subject.chapters %}
+                        <div class="container mb-4">
+                            
+                            {% if chapter.quizzes %}
+                                <div class="row row-cols-1 row-cols-md-3 g-4">
+                                    {% for quiz in chapter.quizzes %}
+                                        <div class="col">
+                                            <div class="card shadow-sm">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">{{quiz.quiz_name}}</h5>
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <div>
+                                                            <p class="card-text">Subject Name: {{subject.name}}</p>
+                                                            <p class="card-text">Chapter Name: {{chapter.name}}</p>
+                                                            <p class="card-text">No. of Question: {{quiz.no_of_question}}</p>
+                                                            <!-- <p class="card-text">Date : {{quiz.date}}</p>
+                                                            <p class="card-text">Duration : {{quiz.duration}}</p> -->
+                                                            
+                                                            
+                                                        </div>
+                                                        <div class="btn-group" role="group">
+                                                            <a href="/edit_quiz/{{quiz.id}}" class="btn btn-outline-primary">Edit</a>
+                                                            <a href="/delete_quiz/{{quiz.id}}" class="btn btn-danger">Delete</a>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                    
+                                                    {% if quiz.questions %}
+                                                      
+
+                                                      
+                                                        <table class="table table-striped mt-3">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>ID</th>
+                                                                    <th>Question Title</th>
+                                                                    <th>Action</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                {% for question in quiz.questions %}
+                                                                    <tr>
+                                                                        <td>{{question.id}}</td>
+                                                                        <td>{{question.question_title}}</td>
+                                                                        <td>
+                                                                            <div class="btn-group" role="group">
+                                                                                <a href="/edit_question/{{question.id}}" class="btn btn-outline-primary">Edit</a>
+                                                                                <a href="/delete_question/{{question.id}}" class="btn btn-danger">Delete</a>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                {% endfor %}
+                                                            </tbody>
+                                                        </table>
+                                                      
+                                                    {% else %}
+                                                        <p>No questions available for this quiz.</p>
+                                                    {% endif %}
+                                                    
+                                                    <a href="/new_question/{{subject.id}}/{{chapter.id}}/{{quiz.id}}" class="btn btn-outline-primary mt-3">+ Add New Question</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                <h3 class="mt-4">No quizzes available for the {{chapter.name}}.</h3>
+                            {% endif %}
+                            
+                            <a href="/new_quiz/{{chapter.id}}" class="btn btn-primary mt-3">+ New Quiz</a>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>No chapters available for this subject.</p>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            <p>No subjects available.</p>
+        {% endif %}
+    </div>
+{% endblock %}
