@@ -3,26 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-    {% block title %}
-          <!-- title -->
-    {% endblock %}
-    </title>
-    {% block styles %}
-
+    <title>Document</title>
+     
     <style>
-    h1 {
-      text-align: center;  /* Center text inside the h1 element */
-      font-size: 3rem;  /* Optional, adjust the size of the heading */
-      color: #333;  /* Optional, change the text color */
-      margin-top: 20px;  /* Optional, add space at the top if needed */
-      background-color: green;
-      color: white; /* Optional: Change text color for better visibility */
-    }
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', san-serif;
+            text-decoration: none;
+        }
+        body{
+            height: 100vh;
+            text-align: center;
+            background-color: aquamarine;
+            padding: 2rem;
+        }
 
-
-
-    
         .header-content{
             max-width: 1280px;
             margin: 0 auto;
@@ -78,7 +74,6 @@
 
         .nav-link:hover{
             color: pink;
-            cursor: pointer;
         }
 
         .contact-button{
@@ -123,22 +118,17 @@
            height: 1.5rem;
         }
     </style>
-
-
-    {% endblock %}
 </head>
 <body>
-     
     <div class="header">
             <header class="header-content">
                  <a href="#logo" class="logo">
-                    <img src="{{ url_for('static', filename='images/logo1.jpg') }}" alt="logo">
-
+                    <img src="../images/logo1.jpg" alt="logo">
                     <span class="logo-text">QuizMaster</span>
                  </a>
 
                  <nav class="nav">
-                      <a onclick="window.location.href='{{ url_for('first_page') }}'" class="nav-link">Home</a>
+                      <a href="#home" class="nav-link">Home</a>
                       <a href="#home" class="nav-link">Home</a>
                       <a href="#home" class="nav-link">Home</a>
                       <a href="#home" class="nav-link">Home</a>
@@ -150,17 +140,9 @@
                  </a>
 
                  <button type="button" class="menu-button">
-                    <img src="{{ url_for('static', filename='images/button.jpg') }}" alt="" class="menu-icon">
-
+                    <img src="../images/button.jpg" alt="" class="menu-icon">
                  </button>
             </header>
     </div>
-     
-      
-    {% block content %}
-         <!-- content  -->
-    {% endblock %}
-     
-     
 </body>
 </html>
