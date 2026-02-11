@@ -1,29 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-    {% block title %}
-          <!-- title -->
-    {% endblock %}
+        {% block title %}
+        title
+        {% endblock %}
     </title>
     {% block styles %}
 
     <style>
-    h1 {
-      text-align: center;  /* Center text inside the h1 element */
-      font-size: 3rem;  /* Optional, adjust the size of the heading */
-      color: #333;  /* Optional, change the text color */
-      margin-top: 20px;  /* Optional, add space at the top if needed */
-      background-color: green;
-      color: white; /* Optional: Change text color for better visibility */
-    }
+        body {
+            background-color: rgb(173, 194, 194);
+            max-height: 80vh;
+        }
 
-
-
-    
-        .header-content{
+        .header-content {
             max-width: 1280px;
             margin: 0 auto;
             display: flex;
@@ -32,11 +26,11 @@
             padding: 1rem;
         }
 
-        .header{
+        .header {
             border-bottom: 1px solid black;
         }
 
-        .logo{
+        .logo {
             display: flex;
             align-items: center;
             font-size: 2rem;
@@ -45,122 +39,128 @@
             text-decoration: none;
             gap: 0.625rem;
         }
-        .logo img{
+
+        .logo img {
 
             width: 50px;
         }
-        .logo-text{
+
+        .logo-text {
             font-size: 2rem;
             font-weight: bold;
         }
 
-        .logo-icon{
+        .logo-icon {
             height: 5.875rem;
             width: 1.938rem;
         }
 
-        .nav{
+        .nav {
             display: none;
             gap: 1.5rem;
         }
 
-        @media  screen and (min-width: 760px) {
-            .nav{
+        @media screen and (min-width: 760px) {
+            .nav {
                 display: flex;
             }
         }
-        .nav-link{
-            color: rgb(56, 223, 167);
-            font-size: 1.125rem;
+
+        .nav-link {
+            color: rgb(10, 15, 13);
+            font-size: 1.4rem;
             font-weight: 600;
             transform: color 0.1s;
         }
 
-        .nav-link:hover{
-            color: pink;
+        .nav-link:hover {
+            color: #2e6c53;
             cursor: pointer;
         }
 
-        .contact-button{
+        .contact-button {
             display: none;
             border: none;
             border-radius: 0.375rem;
             background-color: rgb(64, 64, 240);
-            color: rgb(138, 138, 219);
+            color: rgb(244, 244, 250);
             transform: all 0.1s;
             padding: 0.75rem 1.5rem;
             font-size: 1rem;
             font-weight: 600;
+            text-decoration: none;
         }
 
         @media screen and (min-width: 768px) {
-            .contact-button{
-                display:flex;
+            .contact-button {
+                display: flex;
             }
         }
 
-        .contact-button:hover{
+        .contact-button:hover {
             background-color: blueviolet;
         }
 
-        .menu-button{
-           display: none;
-           border: none;
-           border-radius: 0.375rem;
-           background-color: antiquewhite;
-           font-size: 1rem;
-           font-weight: 600;
+        .menu-button {
+            display: none;
+            border: none;
+            border-radius: 0.375rem;
+            background-color: antiquewhite;
+            font-size: 1rem;
+            font-weight: 600;
 
         }
 
         @media screen and (max-width: 768px) {
-            .menu-button{
-              display: block;
+            .menu-button {
+                display: block;
             }
         }
 
-        .menu-icon{
-           height: 1.5rem;
+        .menu-icon {
+            height: 1.5rem;
         }
     </style>
 
 
     {% endblock %}
 </head>
+
 <body>
-     
+
     <div class="header">
-            <header class="header-content">
-                 <a href="#logo" class="logo">
-                    <img src="{{ url_for('static', filename='images/logo1.jpg') }}" alt="logo">
+        <header class="header-content">
+            <a href="#logo" class="logo">
+                <img src="{{ url_for('static', filename='images/logo1.jpg') }}" alt="logo">
 
-                    <span class="logo-text">QuizMaster</span>
-                 </a>
+                <span class="logo-text">QuizMaster</span>
+            </a>
 
-                 <nav class="nav">
-                      <a onclick="window.location.href='{{ url_for('first_page') }}'" class="nav-link">Home</a>
-                      <a href="#home" class="nav-link">Home</a>
-                      <a href="#home" class="nav-link">Home</a>
-                      <a href="#home" class="nav-link">Home</a>
-                      <a href="#home" class="nav-link">Home</a>
-                 </nav>
+            <nav class="nav">
+                <a onclick="window.location.href='{{ url_for('first_page') }}'" class="nav-link">Home</a>
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#home" class="nav-link">Home</a>
+            </nav>
 
-                 <a href="#contact" class="contact-button">
-                    Contact us
-                 </a>
+            <a href="{{url_for('register')}}" class="contact-button">
+                Register
+            </a>
 
-                 <button type="button" class="menu-button">
-                    <img src="{{ url_for('static', filename='images/button.jpg') }}" alt="" class="menu-icon">
+            <button type="button" class="menu-button">
+                <img src="{{ url_for('static', filename='images/button.jpg') }}" alt="" class="menu-icon">
 
-                 </button>
-            </header>
+            </button>
+        </header>
     </div>
-     
-      
+
+
     {% block content %}
-         <!-- content  -->
+    <!-- content  -->
     {% endblock %}
-     
-     
+
+
 </body>
+
 </html>

@@ -7,76 +7,97 @@
 {% block styles %}
    {{ super() }}
    <style>
-   h2 {
-    background-color: grey; /* Set background color */
-    text-align: center; /* Center the text horizontally */
-    color: white; /* Make the text color white */
-    font-family: Arial, sans-serif; /* Set font style */
-    font-size: 24px; /* Set font size */
-    padding: 10px; /* Add padding for better spacing */
-    margin: 0; /* Remove default margins */
-    border-radius: 5px; /* Add rounded corners for a softer look */
-    }
-    /* Center the form on the page */
-    #loginForm {
-      width: 300px; /* Set a fixed width for the form */
-      margin: 50px auto; /* Center the form vertically and horizontally */
-      padding: 20px; /* Add padding inside the form */
-      background-color: #f4f4f4; /* Light gray background */
-      border-radius: 10px; /* Rounded corners */
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow for depth */
-      font-family: Arial, sans-serif; /* Modern font style */
-    }
+   /* HEADER */
+header {
+    text-align: center;
+    color: white;
+    padding: 20px 0;
+}
 
-    /* Style input groups */
-    .input-group {
-      margin-bottom: 15px; /* Add spacing between input fields */
-    }
+/* CENTER CONTENT */
+main {
+    min-height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-    /* Style labels */
-    label {
-      display: block; /* Make labels take up the full width */
-      font-weight: bold; /* Make the label text bold */
-      margin-bottom: 5px; /* Add spacing below the label */
-      color: #333; /* Darker text for better visibility */
-    }
+/* LOGIN BOX */
+.login-container {
+    background: white;
+    padding: 40px 35px;
+    border-radius: 10px;
+    width: 350px;
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.15);
+}
 
-    /* Style input fields */
-    input[type="text"], input[type="password"] {
-      width: 100%; /* Make the input field stretch the full width */
-      padding: 10px; /* Add padding inside the input */
-      border: 1px solid #ccc; /* Light border */
-      border-radius: 5px; /* Rounded corners for inputs */
-      font-size: 16px; /* Set font size */
-      box-sizing: border-box; /* Ensure padding doesn't affect width */
-    }
+/* INPUT GROUP */
+.input-group {
+    margin-bottom: 20px;
+}
 
-    /* Style the submit button */
-    button[type="submit"] {
-      width: 100%; /* Make the button stretch the full width */
-      padding: 10px; /* Add padding inside the button */
-      background-color: #4CAF50; /* Green background */
-      color: white; /* White text color */
-      border: none; /* Remove border */
-      border-radius: 5px; /* Rounded corners */
-      font-size: 16px; /* Set font size */
-      cursor: pointer; /* Add a pointer cursor on hover */
-    }
+.input-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #444;
+}
 
-    /* Button hover effect */
-    button[type="submit"]:hover {
-      background-color: #45a049; /* Darker green on hover */
-    }
-    footer {
-        background-color: #333;
-        color: white;
-        padding: 10px 0;
-        text-align: center;
-    }
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+}
 
-    footer p {
-        font-size: 14px;
-    }
+.input-group input:focus {
+    border-color: #4CAF50;
+    outline: none;
+    box-shadow: 0px 0px 5px rgba(76,175,80,0.4);
+}
+
+/* BUTTON */
+.btn-primary {
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #3e8e41;
+}
+
+/* REGISTER TEXT */
+.register-text {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.register-text a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.register-text a:hover {
+    text-decoration: underline;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    color: white;
+    padding: 10px;
+}
+
 
    </style>
 {% endblock %}
@@ -98,7 +119,7 @@
                 <input type="password" id="password" name="password" required>
             </div>
             
-            <button type="submit" class="btn-btn-primary">Login</button>
+            <button type="submit" class="btn-primary">Login</button>
         </form>
         <p class="mt-3">Already do not  have an account <a href="{{url_for('register')}}">Register here</a></p>
     </div>

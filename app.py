@@ -91,7 +91,7 @@ def admin_login():
             flash('Invalid username or password. Please try again.')
             return redirect(url_for('admin_login'))
     
-    return render_template('admin_login.html')
+    return render_template('admin_login.html', role="Admin")
 
 # Logout Route (New)
 @app.route("/logout")
